@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/header/Header";
+import Content from "./components/content/content";
+import Basket from "./components/basket/Basket";
+import { Route, Routes } from "react-router-dom";
+import { pizzaBlock } from "./data/db";
+import { useState } from "react";
 
 function App() {
+  const [pizzas, setPizzas] = useState(pizzaBlock);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={<Content pizzas={pizzas} setPizzas={setPizzas} />}
+        ></Route>
+        <Route path="/basket" element={<Basket />}></Route>
+      </Routes>
     </div>
   );
 }
