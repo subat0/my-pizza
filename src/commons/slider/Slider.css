@@ -1,0 +1,20 @@
+.slider__wrapper img{
+padding: 6px;
+width: 100%;
+height: 100%;
+background-size: cover;
+border-radius: 20px;
+}
+.slider__img{
+    height: 200px;
+}
+.slick-prev:before,
+.slick-next:before{
+    font-size: 22px;
+    line-height: 1 !important;
+    opacity: 1 !important;
+    color: #fe5f1e !important;
+}
+.slick-slider{
+    margin-bottom: 25px !important;
+}

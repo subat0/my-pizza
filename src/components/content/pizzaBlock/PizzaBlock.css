@@ -4,9 +4,9 @@
   margin-bottom: 65px;
 }
 
-.pizza-block:not(:nth-of-type(4n)) {
+/* .pizza-block:not(:nth-of-type(4n)) {
   margin-right: 35px;
-}
+} */
 
 .pizza-block__image {
   width: 260px;
@@ -66,6 +66,11 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
   border-radius: 5px;
   cursor: auto;
+}
+
+.pizza-block__selector ul li.disabled {
+  opacity: 0.2;
+  pointer-events:none;
 }
 
 .pizza-block__bottom {
