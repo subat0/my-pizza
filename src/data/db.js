@@ -5,7 +5,7 @@ export const pizzaBlock = [
       "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
     name: "Чизбургер пицца",
     types: [1],
-    sizes: [26, 30, 40],
+    sizes: [0, 1, 2],
     category: 2,
     price: "770",
     rating: "3",
@@ -16,9 +16,9 @@ export const pizzaBlock = [
       "https://dodopizza-a.akamaihd.net/static/Img/Products/02270e55a3204ccaaf26d75f0c817d28_584x584.jpeg",
     name: "Белая пепперони",
     types: [0, 1],
-    sizes: [26, 30, 40],
+    sizes: [0, 2],
     category: 2,
-    price: "770",
+    price: "550",
     rating: "3",
   },
   {
@@ -30,7 +30,7 @@ export const pizzaBlock = [
     sizes: [26, 30, 40],
     category: 2,
     price: "770",
-    rating: "3",
+    rating: "1",
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ export const pizzaBlock = [
     types: [0, 1],
     sizes: [26, 30, 40],
     category: 2,
-    price: "770",
+    price: "350",
     rating: "3",
   },
   {
@@ -63,7 +63,7 @@ export const pizzaBlock = [
     sizes: [26, 30, 40],
     category: 2,
     price: "770",
-    rating: "3",
+    rating: "2",
   },
   {
     id: 7,
@@ -84,7 +84,7 @@ export const pizzaBlock = [
     types: [0, 1],
     sizes: [26, 30, 40],
     category: 2,
-    price: "770",
+    price: "240",
     rating: "3",
   },
 ];

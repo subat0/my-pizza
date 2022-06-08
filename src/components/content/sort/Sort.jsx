@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { SortLabelSvg } from "../../../assets/svg/Svg";
 
-const Sort = ({ items, onClickSort, sort }) => {
-  const [active, setActive] = useState(0);
+const Sort = ({ items, onClickSort, activeSortType}) => {
+
   const [visible, setVisible] = useState(false);
 
-  const activeLable=items[active].name
+  const activeLable=items.find((item)=>item.type===activeSortType).name
 
   const onSelectSort = (index) => {
-    setActive(index);
     onClickSort(index);
     setVisible(true);
   };
@@ -28,9 +27,9 @@ const Sort = ({ items, onClickSort, sort }) => {
           <ul>
             {items.map((item, index) => (
               <li
-                className={active === index ? "active" : ""}
+                className={activeSortType === item.type ? "active" : ""}
                 key={`${item}_${index}`}
-                onClick={() => onSelectSort(index)}
+                onClick={() => onSelectSort(item)}
               >
                 {item.name}
               </li>

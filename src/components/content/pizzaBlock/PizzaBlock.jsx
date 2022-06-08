@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { CardAddPlusSvg } from "../../../assets/svg/Svg";
-import cn from "classnames";
+import classnames from "classnames";
 
 const PizzaBlock = ({ id, image, name, price, types, sizes }) => {
   const availableTypes = ["тонкое", "традиционное"];
   const availableSizes = [26, 30, 40];
-  const [activeType, setActiveType] = useState(types[0]);
-  const [activeSize, setActiveSize] = useState(sizes[0]);
+  const [activeTypes, setActiveType] = useState(types[0]);
+  const [activeSizes, setActiveSize] = useState(sizes[0]);
 
   const onSelectType=(index)=>{
     setActiveType(index)
@@ -26,9 +26,9 @@ const PizzaBlock = ({ id, image, name, price, types, sizes }) => {
             <li
               key={index}
               onClick={()=>onSelectType(index)}
-              className={cn({
-                active: activeType === index,
-                disabled: !types.includes(index),
+              className={classnames({
+                active: activeTypes === index,
+                disabled: !types.includes(index)
               })}
             >
               {type}
@@ -40,9 +40,9 @@ const PizzaBlock = ({ id, image, name, price, types, sizes }) => {
             <li
               key={index}
               onClick={()=>onSelectSize(index)}
-              className={cn({
-                active: activeSize === index,
-                disabled: !sizes.includes(size),
+              className={classnames({
+                active: activeSizes === index,
+                disabled: !sizes.includes(index)
               })}
             >
               {size}

@@ -13,8 +13,14 @@ const Content = ({ pizzas, setPizzas }) => {
   const onClickCategories = (index) => {
     setCategories(categories);
   };
-  const onClickSort = (index) => {
-    setSort(sort);
+  const onClickSort = (type) => {
+    console.log(type)
+    setSort(type);
+    const sortedPizzas = pizzas.sort((a, b) =>
+      a[type.type]?.localeCompare(b[type.type])
+    );
+    setPizzas(sortedPizzas);
+    console.log(sortedPizzas)
   };
 
   return (
@@ -27,7 +33,7 @@ const Content = ({ pizzas, setPizzas }) => {
             items={["Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"]}
           />
           <Sort
-            sort={sort.type}
+            activeSortType={sort.type}
             onClickSort={onClickSort}
             items={[
               { name: "популярности", type: "rating" },
