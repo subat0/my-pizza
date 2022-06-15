@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
+import { useCart } from "react-use-cart";
 import logo from "../../assets/img/logoPizza.svg";
 import { HeaderSvg } from "../../assets/svg/Svg";
 import Button from "../../commons/button/Button";
 
 const Header = () => {
+
+  const {
+    totalItems,
+    cartTotal,
+  } = useCart();
+
   return (
     <div className="header">
       <div className="container">
@@ -20,11 +27,11 @@ const Header = () => {
           <Link to="/basket">
             <Button className="button button--cart">
               <span>
-                2934 <u>С</u>
+                {cartTotal} <u>С</u>
               </span>
               <div className="button__delimiter"></div>
               <HeaderSvg />
-              <span>3</span>
+              <span>{totalItems}</span>
             </Button>
           </Link>
         </div>

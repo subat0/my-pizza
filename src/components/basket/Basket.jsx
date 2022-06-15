@@ -8,10 +8,21 @@ import {
 } from "../../assets/svg/Svg";
 import { Link } from "react-router-dom";
 import EmptyBasket from "./emptyBasket/EmptyBasket";
-const Basket = ({ pizzasBusket, setPizzasBusket }) => {
+import { useCart } from "react-use-cart";
+const Basket = () => {
+  const {
+    isEmpty,
+    items,
+    updateItemQuantity,
+    removeItem,
+    emptyCart,
+    totalItems,
+    cartTotal,
+  } = useCart();
+
   return (
     <div class="wrapper">
-      {pizzasBusket.length !== 0 ? (
+      {!isEmpty ? (
         <div class="content">
           <div class="container container--cart">
             <div class="cart">
@@ -20,38 +31,38 @@ const Basket = ({ pizzasBusket, setPizzasBusket }) => {
                   <HeaderSvg />
                   Корзина
                 </h2>
-                <div class="cart__clear">
+                <div class="cart__clear" onClick={()=>emptyCart()}>
                   <ClearBasketSvg />
                   <span>Очистить корзину</span>
                 </div>
               </div>
               <div class="content__items">
-                {pizzasBusket.map((pizzaInBasket) => (
+                {items.map((pizzaInBasket) => (
                   <div key={pizzaInBasket.id} class="cart__item">
                     <div class="cart__item-img">
                       <img
                         class="pizza-block__image"
-                        src={pizzaInBasket.img}
+                        src={pizzaInBasket.image}
                         alt="Pizza"
                       /> 
                     </div>
                     <div class="cart__item-info">
                       <h3>{pizzaInBasket.name}</h3>
-                      <p>тонкое тесто, 26 см.</p>
+                      <p>{pizzaInBasket.type}, {pizzaInBasket.size} см.</p>
                     </div>
-                    <div class="cart__item-count">
-                      <div class="button button--outline button--circle cart__item-count-minus">
+                    <div  class="cart__item-count">
+                      <div onClick={() => updateItemQuantity(pizzaInBasket.id, pizzaInBasket.quantity - 1)} class="button button--outline button--circle cart__item-count-minus">
                         <CountMinusSvg />
                       </div>
-                      <b>2</b>
-                      <div class="button button--outline button--circle cart__item-count-plus">
+                      <b>{pizzaInBasket.quantity}</b>
+                      <div onClick={() => updateItemQuantity(pizzaInBasket.id, pizzaInBasket.quantity + 1)} class="button button--outline button--circle cart__item-count-plus">
                         <CountPlusSvg />
                       </div>
                     </div>
                     <div class="cart__item-price">
-                      <b>770 ₽</b>
+                      <b>{pizzaInBasket.price} <u>С</u></b>
                     </div>
-                    <div class="cart__item-remove">
+                    <div class="cart__item-remove" onClick={()=>removeItem(pizzaInBasket.id)}>
                       <div class="button button--outline button--circle">
                         <CountRemoveSvg />
                       </div>
@@ -62,12 +73,10 @@ const Basket = ({ pizzasBusket, setPizzasBusket }) => {
               <div class="cart__bottom">
                 <div class="cart__bottom-details">
                   <span>
-                    {" "}
-                    Всего пицц: <b>3 шт.</b>{" "}
+                    Всего пицц: <b>{totalItems}</b>{" "}
                   </span>
                   <span>
-                    {" "}
-                    Сумма заказа: <b>900 ₽</b>{" "}
+                    Сумма заказа: <b>{cartTotal} <u>С</u> </b>
                   </span>
                 </div>
                 <div class="cart__bottom-buttons">
