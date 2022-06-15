@@ -1,4 +1,4 @@
-# Для просмотра приложения пройдите по ссылке
+# Для просмотра приложение пройдите по ссылке
 https://emir-pizza.herokuapp.com/
 
 # Getting Started with Create React App
